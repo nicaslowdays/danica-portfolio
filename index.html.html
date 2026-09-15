@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danica Abella — Operations & Client Support Portfolio</title>
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --card-bg: #ffffff;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1e40af;
+            --callout-bg: #f1f5f9;
+            --callout-border: #cbd5e1;
+            --radius: 10px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1050px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 65px;
+            padding: 0 24px;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-size: 1.05rem;
+        }
+
+        /* Hero / Header Section */
+        .hero {
+            padding: 50px 0 60px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid #dbeafe;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-lead {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            max-width: 850px;
+        }
+
+        .quote-callout {
+            background-color: #f0f7ff;
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-weight: 600;
+            color: var(--badge-text);
+            margin: 25px 0 35px;
+        }
+
+        /* Quick Facts Grid */
+        .quick-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .fact-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            box-shadow: var(--shadow);
+        }
+
+        .fact-card span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Work Samples Grid */
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 24px;
+        }
+
+        .sample-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .sample-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sample-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sample-block {
+            margin-bottom: 14px;
+        }
+
+        .sample-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .sample-text {
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+
+        .sample-worth-noting {
+            background-color: #f8fafc;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .expertise-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .expertise-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--badge-bg);
+            padding-bottom: 8px;
+        }
+
+        .expertise-card ul {
+            list-style: none;
+        }
+
+        .expertise-card li {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .expertise-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Work History */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .company-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .timeline-dates {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .role-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        /* Tools & Rates */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .rate-card, .tools-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .one-off-list {
+            list-style: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .one-off-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .tool-category {
+            margin-bottom: 16px;
+        }
+
+        .tool-category h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        /* Vocaroo Voice Button */
+        .vocaroo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            transition: background 0.2s ease;
+        }
+
+        .vocaroo-btn:hover {
+            background-color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 35px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.1rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Danica Abella</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#samples">Work Samples</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#history">Work History</a></li>
+                <li><a href="#rates">Rates & Tools</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero / About Section -->
+        <section id="about" class="hero">
+            <div class="badge">💼 Operations & Client Support | Subscription Operations | Process Documentation</div>
+            <h1>Danica Abella — Portfolio</h1>
+            
+            <p class="hero-lead">
+                Eight years, five companies, one constant: I'm the person clients reach when something's wrong with their account and the person the team escalates to when the first answer didn't work.
+            </p>
+            <p class="hero-lead">
+                Broken bookings and post-stay complaints in travel, at-risk accounts in telecom, complex customer cases beyond an agent's scope, and most recently subscriptions and invoices in hospitality SaaS. I get it corrected in the system, then write down how, so the next person doesn't have to work it out again.
+            </p>
+
+            <div class="quote-callout">
+                💡 Steady support. Clean records. Processes that outlast the person who built them.
+            </div>
+
+            <!-- Quick Facts Grid -->
+            <div class="quick-facts-grid">
+                <div class="fact-card"><span>✓</span> 8+ years in customer support & operations</div>
+                <div class="fact-card"><span>✓</span> 4 industries: telecom, travel, finance, hospitality SaaS</div>
+                <div class="fact-card"><span>✓</span> Recognised at 4 companies (Employee of the Month)</div>
+                <div class="fact-card"><span>✓</span> Available 20 hrs/week (Overlapping US hours)</div>
+                <div class="fact-card"><span>✓</span> Everything documented to survive handover</div>
+                <div class="fact-card"><span>✓</span> Fully remote, Philippines (GMT+8)</div>
+            </div>
+        </section>
+
+        <!-- Work Samples Section -->
+        <section id="samples">
+            <h2 class="section-title">Work Samples</h2>
+            <p class="section-subtitle">Six pieces of work showing how I approach operations problems: finding what's wrong in financial and customer data, cleaning up records, and writing down processes.</p>
+
+            <div class="samples-grid">
+
+                <!-- Sample 1 -->
+                <div class="sample-card">
+                    <div>
+                        <h3>📊 1. Billing / Revenue Audits</h3>
+                        <div class="sample-block">
+                            <div class="sample-label">The Problem</div>
+                            <div class="sample-text">Invoices and signed contracts quietly drifted apart over a year. The billing system configuration looked correct, but individual invoices went out wrong.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What I Did</div>
+                            <div class="sample-text">Audited 33 issued invoices line-by-line against contract terms, recalculating pro-rations, verifying price-change timing, and checking percentage-based charges.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What It Found</div>
+                            <div class="sample-text"><strong>10 discrepancies ($2,430.73 net recoverable)</strong>. Identified 8 uncollected revenue issues including unapplied escalation clauses and unbilled booking overages.</div>
+                        </div>
+                    </div>
+                    <div class="sample-worth-noting">
+                        <strong>Worth noting:</strong> The most expensive errors are definitional (e.g. gross vs. net commission basis). Automated checks never catch that; only reading agreements against invoices does.
+                    </div>
+                </div>
+
+                <!-- Sample 2 -->
+                <div class="sample-card">
+                    <div>
+                        <h3>🔄 2. Subscription Reconciliation</h3>
+                        <div class="sample-block">
+                            <div class="sample-label">The Problem</div>
+                            <div class="sample-text">MRR reports and contract records disagreed, and nobody had cross-checked them.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What I Did</div>
+                            <div class="sample-text">Built a formula-driven workbook matching 37 subscription records against contracts (price, frequency, currency, dates, discounts).</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What It Found</div>
+                            <div class="sample-text"><strong>19 records flagged</strong> across 8 discrepancy types, including active subscriptions with no contract and signed contracts never billed.</div>
+                        </div>
+                    </div>
+                    <div class="sample-worth-noting">
+                        <strong>Worth noting:</strong> Billing without a contract is a refund risk; a signed unbilled contract is uncollected revenue.
+                    </div>
+                </div>
+
+                <!-- Sample 3 -->
+                <div class="sample-card">
+                    <div>
+                        <h3>🧹 3. CRM Cleanup (Ops Teams)</h3>
+                        <div class="sample-block">
+                            <div class="sample-label">The Problem</div>
+                            <div class="sample-text">Fragmented CRM data: duplicate companies, missing titles, inconsistent country names ("UK", "GB", "United Kingdom").</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What I Did</div>
+                            <div class="sample-text">Profiled records, corrected data, produced an import-ready file with original values preserved, and built a full audit change log.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What It Found</div>
+                            <div class="sample-text"><strong>39 field-level edits across 15 records</strong> and 6 duplicate groups. Flagged plain-text credentials for escalation.</div>
+                        </div>
+                    </div>
+                    <div class="sample-worth-noting">
+                        <strong>Worth noting:</strong> I never delete records. Duplicates are proposed for merge with client review before committing.
+                    </div>
+                </div>
+
+                <!-- Sample 4 -->
+                <div class="sample-card">
+                    <div>
+                        <h3>📖 4. Knowledge Base Restructure</h3>
+                        <div class="sample-block">
+                            <div class="sample-label">The Problem</div>
+                            <div class="sample-text">34 pages in a chaotic flat list. Multiple conflicting versions of procedures ("use this one"), causing staff to ask in chat instead of searching.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What I Did</div>
+                            <div class="sample-text">Audited every page (keep, rewrite, retire), restructured around user questions, and rewrote core procedures with named owners and review dates.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What It Found</div>
+                            <div class="sample-text"><strong>9 duplicates resolved, 12 pages archived with notes</strong>, and plain-text credentials escalated for urgent removal.</div>
+                        </div>
+                    </div>
+                    <div class="sample-worth-noting">
+                        <strong>Worth noting:</strong> Documentation fails due to missing structural thresholds (e.g., unstated approval limits), not writing quality.
+                    </div>
+                </div>
+
+                <!-- Sample 5 -->
+                <div class="sample-card">
+                    <div>
+                        <h3>📝 5. Process Documentation</h3>
+                        <div class="sample-block">
+                            <div class="sample-label">The Problem</div>
+                            <div class="sample-text">Bug escalations depended entirely on tribal knowledge from a single team member, stalling when they were away.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What I Did</div>
+                            <div class="sample-text">Used a 6-prompt asynchronous framework capturing bullet fragments from the expert in ~25 mins, then drafted step-by-step SOPs.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What It Produced</div>
+                            <div class="sample-text">Numbered steps, 2 decision rules, 3 exceptions, a troubleshooting guide, and <strong>surfaced 4 unaddressed policy gaps</strong>.</div>
+                        </div>
+                    </div>
+                    <div class="sample-worth-noting">
+                        <strong>Worth noting:</strong> Open questions surface undocumented policy decisions so leadership can define them.
+                    </div>
+                </div>
+
+                <!-- Sample 6 -->
+                <div class="sample-card">
+                    <div>
+                        <h3>🏗️ 6. Knowledge Base Built Scratch</h3>
+                        <div class="sample-block">
+                            <div class="sample-label">The Problem</div>
+                            <div class="sample-text">Company relied on informal knowledge with an abandoned Notion workspace.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What I Did</div>
+                            <div class="sample-text">Built a 3-level Notion structure organized by task, completed an ownership map, and populated critical operational procedures.</div>
+                        </div>
+                        <div class="sample-block">
+                            <div class="sample-label">What It Found</div>
+                            <div class="sample-text"><strong>3 of 10 mapped areas had zero owners</strong> (software renewals, equipment repairs, client data requests).</div>
+                        </div>
+                    </div>
+                    <div class="sample-worth-noting">
+                        <strong>Worth noting:</strong> An ownership map reveals operational gaps an organization didn't know existed.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- My Expertise Section -->
+        <section id="expertise">
+            <h2 class="section-title">My Expertise</h2>
+            <p class="section-subtitle">Core operational capabilities built over 8 years of client support and operations work.</p>
+
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>🎯 Client Support & Escalations</h3>
+                    <ul>
+                        <li>Tier 2 support across telecom, travel, finance, and SaaS (Intercom, email, phone, chat).</li>
+                        <li>Internal escalation contact for ~20 colleagues across sales, CS, onboarding, and product.</li>
+                        <li>Investigate issues end-to-end; step in as point of contact when team lead is out.</li>
+                        <li>Retention work: identifying at-risk accounts and preventing cancellations.</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3>📊 Subscription & Revenue Operations</h3>
+                    <ul>
+                        <li>Manage subscriptions, invoices, and credit notes in Chargebee and Exact.</li>
+                        <li>Process card/bank refunds and maintain Salesforce to Chargebee sync.</li>
+                        <li>Calculate commission-based billing against monthly revenue and minimum-fee thresholds.</li>
+                        <li>Designed and documented custom proration methods based on actual service days.</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3>💰 Collections & Accounts Receivable</h3>
+                    <ul>
+                        <li>Follow up on overdue invoices and track collection attempts.</li>
+                        <li>Negotiate installment arrangements and waiver terms on balances into five figures.</li>
+                        <li>Reconcile received payments against billing records.</li>
+                        <li>Handle invoice entity changes and billing corrections that unblock payment.</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3>🗂️ CRM, Records & Reporting</h3>
+                    <ul>
+                        <li>Maintain clean, consistent client data in Salesforce.</li>
+                        <li>Audit contract records against billing data to catch mismatches pre-client delivery.</li>
+                        <li>Build reports and decks used by internal leadership and clients.</li>
+                        <li>Reorganize shared drives and filing structures for team navigation.</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3>📝 Admin & Executive Support</h3>
+                    <ul>
+                        <li>Calendar and inbox coordination, document preparation.</li>
+                        <li>Report building in Google Sheets, PowerPoint, and Canva.</li>
+                        <li>Task and project tracking in Asana.</li>
+                        <li>Filing systems and document templates people can actually navigate.</li>
+                    </ul>
+                </div>
+
+                <div class="expertise-card">
+                    <h3>📖 Process Documentation</h3>
+                    <ul>
+                        <li>SOPs and team process guides that standardize operations.</li>
+                        <li>Help center and knowledge base articles for client-facing teams.</li>
+                        <li>Internal communication guides that shorten onboarding.</li>
+                        <li>Defined status categories and reporting flow for churn reviews.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work History Section -->
+        <section id="history">
+            <h2 class="section-title">Work History</h2>
+            <p class="section-subtitle">Professional experience across operations, billing, and Tier 2 client support.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">Sophi Outsourcing</div>
+                        <div class="timeline-dates">Mar 2023 – Jun 2026</div>
+                    </div>
+                    <div class="role-title">Account Support / Billing Support Specialist (May 2024 – Jun 2026)</div>
+                    <div class="role-title">Travel Support Specialist (Mar 2023 – May 2024)</div>
+                    <p class="sample-text">Embedded with client teams in hospitality SaaS and travel.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">Ubiquity Global Services</div>
+                        <div class="timeline-dates">May 2019 – Apr 2022</div>
+                    </div>
+                    <div class="role-title">Tier 2 Customer Service Representative / Point of Contact (2020 – Apr 2022)</div>
+                    <div class="role-title">Customer Service Representative (May 2019 – 2020)</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="company-name">Iqor Philippines · Transcom · Qualfon</div>
+                        <div class="timeline-dates">Nov 2014 – Dec 2017</div>
+                    </div>
+                    <div class="role-title">Customer Service & Retention Roles</div>
+                    <p class="sample-text">Handled customer service and retention across travel, telecom, and finance.</p>
+                </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px;">* Career breaks in 2015–2016, 2018–2019, and 2022–2023 were taken for full-time family caregiving.</p>
+        </section>
+
+        <!-- Tools & Rates Section -->
+        <section id="rates">
+            <h2 class="section-title">Rates & Tools</h2>
+            <p class="section-subtitle">Clear pricing and tool stack for embedded or project-based work.</p>
+
+            <div class="two-col-grid">
+                <!-- Rates Card -->
+                <div class="rate-card">
+                    <h3>Embedded Support</h3>
+                    <div class="price-tag">From $10 <span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/ hour</span></div>
+                    <p class="sample-text">Typically 20 hours/week (Mon–Fri). No minimum contract length; 1 month notice either way.</p>
+
+                    <h4 style="margin-top: 20px; font-size: 0.95rem; color: var(--primary);">One-Off Projects</h4>
+                    <ul class="one-off-list">
+                        <li><span>Subscription & Contract Audit:</span> <strong>From $95</strong></li>
+                        <li><span>Contract vs. Billing Check:</span> <strong>From $110</strong></li>
+                        <li><span>CRM Data Cleanup:</span> <strong>From $85</strong></li>
+                        <li><span>One Process Documented:</span> <strong>From $45</strong></li>
+                        <li><span>Knowledge Base Restructure:</span> <strong>From $120</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Tools Card -->
+                <div class="tools-card">
+                    <h3>Tool Stack</h3>
+                    <br>
+                    <div class="tool-category">
+                        <h4>💳 Billing & Subscriptions</h4>
+                        <p class="sample-text">Chargebee, Exact</p>
+                    </div>
+                    <div class="tool-category">
+                        <h4>🗃️ CRM & Contracts</h4>
+                        <p class="sample-text">Salesforce, PandaDoc</p>
+                    </div>
+                    <div class="tool-category">
+                        <h4>💬 Customer Support</h4>
+                        <p class="sample-text">Intercom</p>
+                    </div>
+                    <div class="tool-category">
+                        <h4>📚 Docs & Project Management</h4>
+                        <p class="sample-text">Notion, Asana, Slack</p>
+                    </div>
+                    <div class="tool-category">
+                        <h4>📊 Workspace & Reporting</h4>
+                        <p class="sample-text">Google Workspace (Sheets, Docs, Drive), MS Office, Canva</p>
+                    </div>
+
+                    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                        <h4>🎙️ Voice Introduction</h4>
+                        <a href="https://voca.ro/12lxYMXDi2ur" target="_blank" class="vocaroo-btn">
+                            <span>▶</span> Listen to Vocaroo Intro
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="border-bottom: none;">
+            <div class="contact-box">
+                <h2 class="section-title">Let's Talk</h2>
+                <p class="sample-text">Message me with your biggest operational challenge, and let's talk about how I can help.</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:danicaabella2017@gmail.com" class="contact-link">
+                        📧 danicaabella2017@gmail.com
+                    </a>
+                    <a href="https://wa.me/639085045530" target="_blank" class="contact-link">
+                        📱 WhatsApp: +63 908 504 5530
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Danica Abella. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
