@@ -6,21 +6,21 @@
     <title>Danica Abella — Operations & Client Support Portfolio</title>
     <style>
         :root {
-            --bg-main: #f8fafc;
-            --card-bg: #ffffff;
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --badge-bg: #eff6ff;
-            --badge-text: #1e40af;
-            --callout-bg: #f1f5f9;
-            --callout-border: #cbd5e1;
+            --bg-main: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #f8fafc;
+            --accent: #38bdf8;
+            --accent-hover: #7dd3fc;
+            --text-dark: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --badge-bg: #0f172a;
+            --badge-text: #38bdf8;
+            --callout-bg: #1e293b;
+            --callout-border: #38bdf8;
             --radius: 10px;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -53,7 +53,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
@@ -114,7 +114,7 @@
             font-size: 1.05rem;
         }
 
-        /* Hero / Header Section */
+        /* Hero Section */
         .hero {
             padding: 50px 0 60px;
         }
@@ -128,7 +128,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 20px;
-            border: 1px solid #dbeafe;
+            border: 1px solid var(--border);
         }
 
         .hero h1 {
@@ -148,13 +148,16 @@
         }
 
         .quote-callout {
-            background-color: #f0f7ff;
+            background-color: var(--card-bg);
             border-left: 4px solid var(--accent);
             padding: 16px 20px;
             border-radius: 0 var(--radius) var(--radius) 0;
             font-weight: 600;
-            color: var(--badge-text);
+            color: var(--accent);
             margin: 25px 0 35px;
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         /* Quick Facts Grid */
@@ -198,12 +201,13 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         }
 
         .sample-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
         }
 
         .sample-card h3 {
@@ -224,7 +228,7 @@
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.05em;
-            color: var(--text-muted);
+            color: var(--accent);
             margin-bottom: 4px;
         }
 
@@ -234,7 +238,7 @@
         }
 
         .sample-worth-noting {
-            background-color: #f8fafc;
+            background-color: rgba(15, 23, 42, 0.5);
             border-top: 1px solid var(--border);
             padding-top: 12px;
             margin-top: 12px;
@@ -262,7 +266,7 @@
             font-size: 1.1rem;
             color: var(--primary);
             margin-bottom: 12px;
-            border-bottom: 2px solid var(--badge-bg);
+            border-bottom: 1px solid var(--border);
             padding-bottom: 8px;
         }
 
@@ -346,7 +350,7 @@
         .price-tag {
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--accent);
             margin: 10px 0;
         }
 
@@ -371,7 +375,7 @@
         .tool-category h4 {
             font-size: 0.85rem;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: var(--accent);
             margin-bottom: 6px;
         }
 
@@ -380,19 +384,19 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background-color: var(--primary);
-            color: #ffffff;
+            background-color: var(--accent);
+            color: var(--bg-main);
             padding: 12px 20px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.95rem;
             margin-top: 10px;
             transition: background 0.2s ease;
         }
 
         .vocaroo-btn:hover {
-            background-color: var(--accent);
+            background-color: var(--accent-hover);
         }
 
         /* Contact Section */
